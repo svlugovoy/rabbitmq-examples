@@ -1,0 +1,40 @@
+version: '3'
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "5673:5673"
+      - "15672:15672"
+
+  rabbitmq-client-app:
+    container_name: rabbitmq-client-app
+    build: rabbitmq-client-demo/
+    image: svlugovoy/rabbitmq-client-app:0.0.1
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - rabbitmq
+
+  rabbitmq-demo-app:
+    container_name: rabbitmq-demo-app
+    build: rabbitmq-demo/
+    image: svlugovoy/rabbitmq-demo-app:0.0.1
+    restart: always
+    ports:
+      - 8085:8085
+    depends_on:
+      - rabbitmq-client-app
+
+
+
+
+#docker-compose build
+#docker-compose up -d
+#docker-compose down
+#docker-compose down --rmi all
+
+#docker run -d --name some-rabbit -p 5672:5672 -p 5673:5673 -p 15672:15672 rabbitmq:3-management
+#192.168.99.100:15672 guest/guest

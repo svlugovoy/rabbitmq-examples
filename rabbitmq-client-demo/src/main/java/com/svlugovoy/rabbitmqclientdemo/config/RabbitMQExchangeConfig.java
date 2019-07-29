@@ -1,4 +1,4 @@
-package com.svlugovoy.rabbitmqclientdemo;
+package com.svlugovoy.rabbitmqclientdemo.config;
 
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.ExchangeBuilder;
@@ -11,13 +11,13 @@ public class RabbitMQExchangeConfig {
 
     @Bean
     Exchange my1Exchange() {
-        return new TopicExchange("My1Exchange");
+        return new TopicExchange("My1_TopicExchange");
     }
 
     @Bean
     Exchange my2Exchange() {
         return ExchangeBuilder
-                .directExchange("My2Exchange")
+                .directExchange("My2_directExchange")
                 .autoDelete()
                 .internal()
                 .build();
@@ -26,7 +26,7 @@ public class RabbitMQExchangeConfig {
     @Bean
     Exchange my3Exchange() {
         return ExchangeBuilder
-                .topicExchange("My3ExchangeTopic")
+                .topicExchange("My3_topicExchange")
                 .autoDelete()
                 .durable(true)
                 .internal()
@@ -36,7 +36,7 @@ public class RabbitMQExchangeConfig {
     @Bean
     Exchange my4Exchange() {
         return ExchangeBuilder
-                .fanoutExchange("My4ExchangeFanout")
+                .fanoutExchange("My4_fanoutExchange")
                 .autoDelete()
                 .durable(false)
                 .internal()
@@ -46,7 +46,7 @@ public class RabbitMQExchangeConfig {
     @Bean
     Exchange my5Exchange() {
         return ExchangeBuilder
-                .headersExchange("My5ExchangeHeaders")
+                .headersExchange("My5_headersExchange")
                 .durable(true)
                 .internal()
                 .ignoreDeclarationExceptions()

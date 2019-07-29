@@ -1,5 +1,6 @@
-package com.svlugovoy.rabbitmqclientdemo;
+package com.svlugovoy.rabbitmqclientdemo.config;
 
+import com.svlugovoy.rabbitmqclientdemo.RabbitMQMessageListener;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -40,7 +41,7 @@ public class RabbitMQConfig {
 
     @Bean
     ConnectionFactory connectionFactory() {
-        CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory("localhost");
+        CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory("192.168.99.100");
         cachingConnectionFactory.setUsername("guest");
         cachingConnectionFactory.setPassword("guest");
         return cachingConnectionFactory;

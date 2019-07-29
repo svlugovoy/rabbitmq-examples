@@ -1,4 +1,4 @@
-package com.svlugovoy.rabbitmqclientdemo;
+package com.svlugovoy.rabbitmqclientdemo.config;
 
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.QueueBuilder;
@@ -10,13 +10,13 @@ public class RabbitMQQueueConfig {
 
     @Bean
     Queue my2Queue(){
-        return new Queue("My2Queue", false);
+        return new Queue("My2_Queue", false);
     }
 
     @Bean
     Queue my3Queue(){
         return QueueBuilder
-                .durable("My3Queue")
+                .durable("My3_durable_Queue")
                 .autoDelete()
                 .exclusive()
                 .build();
